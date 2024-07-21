@@ -41,6 +41,7 @@ cd netty-native-sample
 ./gradlew test
 ```
 
+
 ## GraalVM Native Image
 
 To build a native image:
@@ -48,6 +49,8 @@ To build a native image:
 ```bash
 ./gradlew nativeCompile
 ```
+
+This creates a native executable located at `app/build/native/nativeCompile/netty-server`.
 
 ## Docker Image
 
@@ -63,7 +66,6 @@ To run the built Docker image:
 docker run --rm -i -t -p 8080:8080 netty-native-sample
 ```
 
-This creates a native executable located at `app/build/native/nativeCompile/netty-server`.
 
 ## License
 
