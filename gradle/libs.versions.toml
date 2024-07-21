@@ -1,0 +1,14 @@
+# https://docs.gradle.org/current/userguide/platforms.html#sub::toml-dependencies-format
+
+[versions]
+java = "21"
+spring-boot = "3.3.2" # only for dependency versions - https://docs.spring.io/spring-boot/index.html https://repo1.maven.org/maven2/org/springframework/boot/spring-boot/maven-metadata.xml
+
+[libraries]
+assertj-core = { module = "org.assertj:assertj-core" }
+junit-jupiter = { module = "org.junit.jupiter:junit-jupiter" }
+netty-all = { module = "io.netty:netty-all" }
+spring-boot-bom = { module = "org.springframework.boot:spring-boot-dependencies", version.ref = "spring-boot" }
+
+[plugins]
+graalvm-buildtools = { id = "org.graalvm.buildtools.native", version = "0.10.2" }

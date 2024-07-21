@@ -1,0 +1,14 @@
+.*
+
+!.dockerignore
+!.editorconfig
+!.gitattributes
+!.gitignore
+!.gitlab-ci.yml
+
+build/
+
+# IntelliJ
+*.iws
+*.iml
+*.ipr

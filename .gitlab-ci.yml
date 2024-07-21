@@ -1,0 +1,32 @@
+image: docker:latest
+
+services:
+  - docker:dind
+
+before_script:
+  - GRADLE_USER_HOME="$(pwd)/.gradle"
+  - export GRADLE_USER_HOME
+
+variables:
+  # Instruct Testcontainers to use the daemon of DinD.
+  DOCKER_HOST: "tcp://docker:2375"
+  # Instruct Docker not to start over TLS.
+  DOCKER_TLS_CERTDIR: ""
+  # DOCKER_TLS_CERTDIR: "/certs"
+  # Improve performance with overlayfs.
+  DOCKER_DRIVER: overlay2
+
+build:
+  stage: build
+  script:
+    # removes the 'v' prefix from CI_COMMIT_TAG if it exists.
+    - CLEAN_CI_COMMIT_TAG=${CI_COMMIT_TAG#v}
+    # TAG_NAME is set to CLEAN_CI_COMMIT_TAG if CI_COMMIT_TAG is set, otherwise it falls back to the specified fallback value.
+    - TAG_NAME=${CLEAN_CI_COMMIT_TAG:-"$CI_COMMIT_REF_SLUG-$(date +"%Y%m%d-%H%M%S")-$CI_COMMIT_SHORT_SHA"}
+    - docker build -f build.Dockerfile -t $CI_REGISTRY_IMAGE .
+    - docker login $CI_REGISTRY -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD;
+      docker tag $CI_REGISTRY_IMAGE $CI_REGISTRY_IMAGE:$TAG_NAME;
+      docker push $CI_REGISTRY_IMAGE:$TAG_NAME;
+    - if [ "$CI_COMMIT_BRANCH" == "main" ]; then
+      docker push $CI_REGISTRY_IMAGE:latest;
+      fi
