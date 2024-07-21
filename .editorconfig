@@ -14,7 +14,7 @@ max_line_length = 200
 trim_trailing_whitespace = true
 continuation_indent_size = 4
 
-[*.{json,yaml}]
+[*.{json,yaml,md}]
 indent_style = space
 
 [*.xml]
