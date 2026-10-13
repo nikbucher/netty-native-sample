@@ -7,7 +7,7 @@ Demonstrates building the same app as a JVM app, a [GraalVM](https://www.graalvm
 
 ## Requirements
 
-- Java 21
+- Java 25
 - GraalVM (only for the native image)
 - Docker (only for the container image)
 
