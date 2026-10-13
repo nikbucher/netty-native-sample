@@ -1,5 +1,5 @@
 # 1. Build the application
-FROM gradle:jdk21-graal AS builder
+FROM gradle:jdk25-graal AS builder
 
 WORKDIR /app-build
 COPY . .
