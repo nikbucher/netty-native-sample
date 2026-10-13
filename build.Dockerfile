@@ -3,7 +3,7 @@ FROM gradle:jdk21-graal AS builder
 
 WORKDIR /app-build
 COPY . .
-RUN gradle --no-daemon --console=plain check nativeBuild
+RUN gradle --no-daemon --console=plain check nativeCompile
 
 
 # 2. Package the application
