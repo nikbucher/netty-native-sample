@@ -1,72 +1,36 @@
 # Netty Native Sample
 
-Netty Native Sample contains a simple HTTP server using Netty that responds with "Hello World" to any HTTP request.
+Minimal HTTP server built with [Netty](https://netty.io/) that responds with "Hello World" to any request.
+Demonstrates building the same app as a JVM app, a [GraalVM](https://www.graalvm.org/) native image, and a Docker image.
 
 ## Requirements
 
 - Java 21
-- GraalVM if you want to build a native image
-- Docker if you want to build a Docker image
+- GraalVM (only for the native image)
+- Docker (only for the container image)
 
-## Getting Started
-
-### Clone the Repository
+## Run
 
 ```bash
-git clone https://gitlab.com/nikbucher/netty-native-sample.git
-cd netty-native-sample
+./gradlew run
 ```
 
-### Build and Run
-
-1. **Build the project:**
-
-    ```bash
-    ./gradlew build
-    ```
-
-2. **Run the server:**
-
-    ```bash
-    ./gradlew run
-    ```
-
-3. **Access the server:**
-
-   Navigate to `http://127.0.0.1:8080/` in your browser.
-
-## Running Tests
-
-```bash
-./gradlew test
-```
-
+Then open <http://127.0.0.1:8080/>.
 
 ## GraalVM Native Image
 
-To build a native image:
-
 ```bash
 ./gradlew nativeCompile
+./app/build/native/nativeCompile/netty-server
 ```
-
-This creates a native executable located at `app/build/native/nativeCompile/netty-server`.
 
 ## Docker Image
 
-To build a Docker image:
-
 ```bash
 docker build -f build.Dockerfile -t netty-native-sample .
+docker run --rm -p 8080:8080 netty-native-sample
 ```
-
-To run the built Docker image:
-
-```bash
-docker run --rm -i -t -p 8080:8080 netty-native-sample
-```
-
 
 ## License
 
-This project is licensed under the Unlicense. See the [LICENSE](LICENSE) file for details.
+[MIT](LICENSE)
