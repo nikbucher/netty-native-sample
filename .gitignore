@@ -5,6 +5,7 @@
 !.gitattributes
 !.gitignore
 !.gitlab-ci.yml
+!.github/
 
 build/
 
