@@ -2,7 +2,7 @@
 
 [versions]
 java = "25"
-spring-boot = "4.1.1" # only for dependency versions - https://docs.spring.io/spring-boot/index.html https://repo1.maven.org/maven2/org/springframework/boot/spring-boot/maven-metadata.xml
+spring-boot = "4.1.2" # only for dependency versions - https://docs.spring.io/spring-boot/index.html https://repo1.maven.org/maven2/org/springframework/boot/spring-boot/maven-metadata.xml
 
 [libraries]
 assertj-core = { module = "org.assertj:assertj-core" }
@@ -11,4 +11,4 @@ netty-all = { module = "io.netty:netty-all" }
 spring-boot-bom = { module = "org.springframework.boot:spring-boot-dependencies", version.ref = "spring-boot" }
 
 [plugins]
-graalvm-buildtools = { id = "org.graalvm.buildtools.native", version = "1.1.14" }
+graalvm-buildtools = { id = "org.graalvm.buildtools.native", version = "1.1.17" }
